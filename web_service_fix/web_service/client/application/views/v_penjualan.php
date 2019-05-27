@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CRUD - Quiz Promnet</title>
+	<title>Site Jual</title>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -263,14 +263,18 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Employees</b></h2>
+  						<h2>Manage <b>Penjualan</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="<?php echo site_url('C_karyawan/index') ?>" class="btn btn-success"> <span>Home</span></a>
 					</div>
 				</div>
-			</div>
 
+			</div>
+      <div class="col-sm-6">
+          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"> <span>Add New Employee</span></a>
+        </div>
+        <br>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -284,6 +288,7 @@
 						<th>Cicil Pokok</th>
 						<th>Cicil Bunga</th>
 						<th>Cicil Total</th>
+						<th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -302,6 +307,9 @@
 							<td><?php echo $key->cicilan_pokok; ?></td>
 							<td><?php echo $key->cicilan_bunga; ?></td>
 							<td><?php echo $key->cicilan_total; ?></td>
+              <td>
+								<a href="#deleteModal<?php echo $key->id_penjualan;?>" class="delete" data-toggle="modal">Delete</a>
+							</td>
 						</tr>
 						<?php
 						$i++;
@@ -313,6 +321,75 @@
 
 		</div>
 	</div>
+
+  <div id="addEmployeeModal" class="modal fade">
+  		<div class="modal-dialog">
+  			<div class="modal-content">
+  				<form action="<?php echo site_url('C_karyawan/add'); ?>" method="post">
+  					<div class="modal-header">
+  						<h4 class="modal-title">Add Employee</h4>
+  						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  					</div>
+  					<div class="modal-body">
+  						<div class="form-group">
+  							<label>Id Motor</label>
+  							<input type="text" name="id_motor" class="form-control" required>
+  						</div>
+  						<div class="form-group">
+  							<label>Id Cicil</label>
+  							<input type="text" name="id_cicil" class="form-control" required>
+  						</div>
+  						<div class="form-group">
+  							<label>Id uang muka</label>
+  							<input type="text" name="id_uang_muka" class="form-control" required>
+  						</div>
+  						<div class="form-group">
+  							<label>Cicilan pokok</label>
+  							<input type="text" name="cicilan_pokok" class="form-control" required>
+  						</div>
+  						<div class="form-group">
+  							<label>Cicilan bunga</label>
+  							<input type="text" name="cicilan_bunga" class="form-control" required>
+  						</div>
+  						<div class="form-group">
+  							<label>Cicilan total</label>
+  							<input type="text" name="cicilan_total" class="form-control" required>
+  						</div>
+  					<div class="modal-footer">
+  						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+  						<input id="tombol" type="submit" class="btn btn-success" value="Add">
+  					</div>
+  				</form>
+  			</div>
+  		</div>
+  	</div>
+
+    <?php
+	foreach($penjualan as $key){
+
+		?>
+		<div id="deleteModal<?php echo $key->id_penjualan;?>" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="<?php echo site_url('C_karyawan/delete/'.$key->id_penjualan); ?>" method="POST">
+						<div class="modal-header">
+							<h4 class="modal-title">Delete Employee</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<p>Are you sure you want to delete these Records?</p>
+							<p class="text-warning"><small>This action cannot be undone.</small></p>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+							<input type="submit" class="btn btn-danger" value="Delete">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	<?php } ?>
 
 </body>
 </html>

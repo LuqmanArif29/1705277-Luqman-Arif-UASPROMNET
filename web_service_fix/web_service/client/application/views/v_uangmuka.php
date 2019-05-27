@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CRUD - Quiz Promnet</title>
+	<title>Site Jual</title>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -263,7 +263,7 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Employees</b></h2>
+						<h2>Manage <b>Uang Muka</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="<?php echo site_url('C_karyawan/index') ?>" class="btn btn-success"> <span>Home</span></a>
